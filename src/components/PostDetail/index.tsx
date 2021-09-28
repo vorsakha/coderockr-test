@@ -24,28 +24,33 @@ const PostDetail = () => {
   }, [memoizedCall]);
 
   return (
-    <div>
+    <div className="flex justify-center items-center min-h-screen flex-wrap">
       {post === null ? (
         <Loading />
       ) : (
-        <>
-          <div>
-            <img src={post.imageUrl} alt={post.title} />
-          </div>
-          <div>
-            <small>{handleDate(post.date)}</small>
-            <p>{post.author}</p>
-            <h1>{post.title}</h1>
+        <div className="relative bg-white max-w-6xl mx-auto shadow my-8">
+          <div className="flex">
+            <div className="min-w-half max-w-half object-cover">
+              <img src={post.imageUrl} alt={post.title} />
+            </div>
+
+            <div className="min-w-half max-w-half h-full flex flex-col self-center items-start p-16">
+              <small className="pb-8 text-lg">{handleDate(post.date)}</small>
+              <p className="p-0 pb-8 text-xl">{post.author}</p>
+              <h1 className="pb-8 text-3xl text-yellow font-bold">
+                {post.title}
+              </h1>
+            </div>
           </div>
 
-          <article>
+          <article className="p-16 paragraph">
             <div
               dangerouslySetInnerHTML={{
                 __html: post.article,
               }}
             />
           </article>
-        </>
+        </div>
       )}
     </div>
   );
