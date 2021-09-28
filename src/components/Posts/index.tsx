@@ -95,8 +95,10 @@ const Posts = () => {
                   onLoad={() => setImageLoaded(true)}
                 />
                 <div className="flex flex-col p-8 justify-center">
-                  <p className="text-md py-2">{item.author}</p>
-                  <PostsLink to={`/post/${item.id}`}>{item.title}</PostsLink>
+                  <p className="text-md p-0 py-2">{item.author}</p>
+                  <PostsLink to={`/post/${item.id}`}>
+                    {handleLimitString(item.title, 47)}
+                  </PostsLink>
                   <div className="text-md py-2">
                     <div
                       dangerouslySetInnerHTML={{
