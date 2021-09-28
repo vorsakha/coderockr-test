@@ -7,3 +7,10 @@ interface PostTypes {
   date: string;
   imageUrl: string;
 }
+
+interface FormTypes {
+  name: string;
+  email: string;
+  phone: string;
+  post: string;
+}
