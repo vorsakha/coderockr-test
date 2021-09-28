@@ -24,7 +24,7 @@ const PostDetail = () => {
   }, [memoizedCall]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen flex-wrap">
+    <div className="flex justify-center items-center min-h-partial flex-wrap">
       {post === null ? (
         <Loading />
       ) : (
