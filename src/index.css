@@ -7,4 +7,16 @@
   .h-160 {
     height: 640px;
   }
+  .min-w-half {
+    min-width: 50%;
+  }
+  .max-w-half {
+    max-width: 50%;
+  }
+  .black {
+    background-color: #2d2d2d;
+  }
+  .text-yellow {
+    color: #f1a10a;
+  }
 }
