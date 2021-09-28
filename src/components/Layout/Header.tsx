@@ -6,7 +6,7 @@ const Header = () => {
   };
 
   return (
-    <header className="p-1 bg-gray-800 text-white shadow fixed w-screen top-0 z-50">
+    <header className="p-1 black text-white shadow fixed w-screen top-0 z-50">
       <div className="px-4 flex flex-row justify-between items-center max-w-6xl mx-auto h-24">
         <div className="text-3xl">
           <Link to="/" onClick={handleScrollTop}>
