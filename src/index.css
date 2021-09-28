@@ -7,11 +7,17 @@
   .h-160 {
     height: 640px;
   }
+  .min-w-lg {
+    min-width: 810px;
+  }
   .min-w-half {
     min-width: 50%;
   }
   .max-w-half {
     max-width: 50%;
+  }
+  .min-h-partial {
+    min-height: calc(100vh - 104px);
   }
   .black {
     background-color: #2d2d2d;
