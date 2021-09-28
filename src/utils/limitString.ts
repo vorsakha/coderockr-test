@@ -1,7 +1,9 @@
-const handleLimitString = (str: string) => {
+const handleLimitString = (str: string, limit?: number) => {
+  const actualLimit = limit || 100;
+
   if (str) {
-    if (str.length > 100) {
-      const newString = str.substring(0, 100);
+    if (str.length > actualLimit) {
+      const newString = str.substring(0, actualLimit);
 
       return newString + "...";
     }
