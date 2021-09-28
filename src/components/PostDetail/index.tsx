@@ -2,7 +2,6 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../common/LoadingSpinner";
-import Markdown from "markdown-to-jsx";
 import handleDate from "../../utils/formatDate";
 
 const PostDetail = () => {
@@ -40,7 +39,11 @@ const PostDetail = () => {
           </div>
 
           <article>
-            <Markdown>{post.article}</Markdown>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.article,
+              }}
+            />
           </article>
         </>
       )}
