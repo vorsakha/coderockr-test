@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import Loading from "../common/LoadingSpinner";
+import PostsLink from "./PostsLink";
 
 const Posts = ({ limit = 10 }: { limit?: number }) => {
-  const [posts, setPosts] = useState<PostsTypes[] | null>(null);
+  const [posts, setPosts] = useState<PostTypes[] | null>(null);
 
   const fetchPosts = async () => {
     const res = await axios.get(
@@ -26,7 +27,9 @@ const Posts = ({ limit = 10 }: { limit?: number }) => {
       ) : (
         posts.map((item) => (
           <ul key={item.id}>
-            <li>{item.title}</li>
+            <li>
+              <PostsLink to={`/post/${item.id}`}>{item.title}</PostsLink>
+            </li>
           </ul>
         ))
       )}
