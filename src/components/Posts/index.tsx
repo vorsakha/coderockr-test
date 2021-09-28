@@ -111,7 +111,7 @@ const Posts = () => {
               </li>
             ))}
           </ul>
-          {loading ? <Loading /> : null}
+          {loading ? <Loading bot /> : null}
         </>
       )}
     </div>
