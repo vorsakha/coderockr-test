@@ -32,6 +32,8 @@ const Posts = () => {
     };
 
     fetchPosts();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   const pageRef = useRef(page);
@@ -68,7 +70,7 @@ const Posts = () => {
   }, [element]);
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center min-h-partial">
       {posts.length === 0 ? (
         <Loading />
       ) : (
