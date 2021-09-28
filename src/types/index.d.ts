@@ -1,4 +1,4 @@
-interface PostsTypes {
+interface PostTypes {
   id: string;
   author: string;
   authorEmail: string;
