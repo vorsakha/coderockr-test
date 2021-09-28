@@ -25,13 +25,13 @@ const Posts = ({ limit = 10 }: { limit?: number }) => {
       {posts === null ? (
         <Loading />
       ) : (
-        posts.map((item) => (
-          <ul key={item.id}>
-            <li>
+        <ul>
+          {posts.map((item) => (
+            <li key={item.id}>
               <PostsLink to={`/post/${item.id}`}>{item.title}</PostsLink>
             </li>
-          </ul>
-        ))
+          ))}
+        </ul>
       )}
     </div>
   );
