@@ -8,16 +8,16 @@ function App() {
   const location: any = useLocation();
 
   // Background of the modal route
-  const background = location?.state && location?.state.background;
+  const background = location.state && location.state.background;
 
   return (
     <Layout>
       <Switch location={background || location}>
         <Route exact path="/" component={Home} />
-        <Route exact path="/post/:id" component={Post} />
+        <Route path="/post/:id" component={Post} />
       </Switch>
 
-      <Route exact path="/contact" component={Contact} />
+      {background && <Route path="/contact" component={Contact} />}
     </Layout>
   );
 }
