@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  useLocation,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { useLocation, Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -13,18 +8,17 @@ function App() {
   const location: any = useLocation();
 
   // Background of the modal route
-  const background = location.state && location.state.background;
-  return (
-    <Router>
-      <Layout>
-        <Switch location={background || location}>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/post/:id" component={Post} />
-        </Switch>
+  const background = location?.state && location?.state.background;
 
-        <Route exact path="/contact" component={Contact} />
-      </Layout>
-    </Router>
+  return (
+    <Layout>
+      <Switch location={background || location}>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/post/:id" component={Post} />
+      </Switch>
+
+      <Route exact path="/contact" component={Contact} />
+    </Layout>
   );
 }
 
