@@ -29,7 +29,7 @@ const PostDetail = () => {
       {post === null ? (
         <Loading />
       ) : (
-        <div className="relative bg-white max-w-6xl mx-auto shadow  md:my-8">
+        <div className="relative bg-white max-w-6xl mx-auto shadow-lg md:my-8">
           <div className="flex lg:flex-row flex-col">
             {!imageLoaded && (
               <div className="h-full w-full lg:max-w-half bg-gray-500"></div>
