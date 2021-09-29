@@ -25,25 +25,26 @@ const PostDetail = () => {
   }, [memoizedCall]);
 
   return (
-    <div className="flex justify-center items-center min-h-partial flex-wrap">
+    <div className="flex justify-center items-center min-h-partial flex-wrap md:px-6">
       {post === null ? (
         <Loading />
       ) : (
-        <div className="relative bg-white max-w-6xl mx-auto shadow my-8">
-          <div className="flex">
+        <div className="relative bg-white max-w-6xl mx-auto shadow  md:my-8">
+          <div className="flex lg:flex-row flex-col">
             {!imageLoaded && (
-              <div className="h-full w-full max-w-half bg-gray-500"></div>
+              <div className="h-full w-full lg:max-w-half bg-gray-500"></div>
             )}
 
-            <div className="min-w-half max-w-half object-cover">
+            <div className="min-w-half h-60 sm:h-80 md:h-96 lg:h-full w-full lg:max-w-half">
               <img
+                className="w-full h-full object-cover"
                 src={post.imageUrl}
                 alt={post.title}
                 onLoad={() => setImageLoaded(true)}
               />
             </div>
 
-            <div className="min-w-half max-w-half h-full flex flex-col self-center items-start p-16">
+            <div className="min-w-half lg:max-w-half w-full h-full flex flex-col max-w-4xl self-center items-start px-4 md:px-16 md:mt-16 mt-4">
               <small className="pb-8 text-lg">{handleDate(post.date)}</small>
               <p className="p-0 pb-8 text-xl">{post.author}</p>
               <h1 className="pb-8 text-4xl text-yellow font-bold">
@@ -52,7 +53,7 @@ const PostDetail = () => {
             </div>
           </div>
 
-          <article className="py-24 paragraph max-w-3xl mx-auto">
+          <article className="lg:py-24 px-4 md:px-16 paragraph max-w-4xl mx-auto mb-4 lg:mb-0">
             <div
               dangerouslySetInnerHTML={{
                 __html: post.article,
