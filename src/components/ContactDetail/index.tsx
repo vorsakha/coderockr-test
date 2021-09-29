@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import handleBlockScroll from "../../utils/blockScroll";
 import useClickOutside from "../../utils/hooks/useClickOutside";
 import buttonIcon from "../../assets/buttonIcon.svg";
-import { IoClose as CloseIcon } from "@react-icons/all-files/io5/IoClose";
+import Close from "../common/Close";
 
 const ContactDetail = () => {
   const [formContent, setFormContent] = useState<FormTypes>({
@@ -49,12 +49,10 @@ const ContactDetail = () => {
   return (
     <div className="fixed left-0 top-0 flex items-center justify-center h-screen w-screen bg-opacity-40 bg-gray-900 blur-lg z-50">
       <div ref={ref} className="bg-white shadow p-16 min-w-lg relative">
-        <button
-          onClick={handleCloseButton}
-          className="text-3xl absolute top-0 right-0 p-8"
-        >
-          <CloseIcon />
-        </button>
+        <div className="absolute top-0 right-0">
+          <Close onClick={handleCloseButton} />
+        </div>
+
         <h1 className="text-4xl text-yellow font-bold pb-8 text-center">
           Contact
         </h1>
