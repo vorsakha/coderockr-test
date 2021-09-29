@@ -75,28 +75,32 @@ const Posts = () => {
         <Loading />
       ) : (
         <>
-          <ul className="grid grid-cols-6 gap-y-14 py-14">
+          <ul className="flex flex-col lg:grid lg:grid-cols-6 lg:gap-y-14 gap-y-4 py-5 px-4 md:px-0">
             {posts.map((item, idx) => (
               <li
                 ref={posts.length === idx + 1 ? setElement : null}
                 className={`${
-                  (idx + 1) % 3 === 0 ? `col-span-4 h-160` : `col-span-3 h-80`
+                  (idx + 1) % 3 === 0
+                    ? `col-span-6 2xl:col-span-4 lg:h-160`
+                    : `col-span-6 2xl:col-span-3 lg:h-80`
                 }
               ${
-                (idx + 1) % 3 === 0 && (idx + 1) % 2 === 0 ? `col-start-3` : ``
-              } bg-white w-full flex flex-row relative shadow`}
+                (idx + 1) % 3 === 0 && (idx + 1) % 2 === 0
+                  ? `col-span-6 2xl:col-start-3`
+                  : ``
+              } bg-white w-full flex flex-col lg:flex-row relative shadow`}
                 key={item.id}
               >
                 {!imageLoaded && (
-                  <div className="h-full w-full max-w-half bg-gray-500"></div>
+                  <div className="h-60 md:h-96 lg:h-full w-full max-w-half bg-gray-500"></div>
                 )}
                 <img
-                  className="h-full max-w-half object-cover"
+                  className="h-60 md:h-96 lg:h-full lg:max-w-half object-cover"
                   src={item.imageUrl}
                   alt={item.title}
                   onLoad={() => setImageLoaded(true)}
                 />
-                <div className="flex flex-col p-8 justify-center">
+                <div className="flex flex-col p-4 sm:p-8 justify-center">
                   <p className="text-md p-0 py-2">{item.author}</p>
                   <PostsLink to={`/post/${item.id}`}>
                     {handleLimitString(item.title, 47)}
