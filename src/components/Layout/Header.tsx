@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className="p-1 black text-white shadow fixed w-screen top-0 z-40">
       <div className="px-4 flex flex-row justify-between items-center max-w-6xl mx-auto h-24">
-        <div className="text-3xl">
+        <div className="text-4xl font-bold">
           <Link to="/" onClick={handleScrollTop}>
             Rockr Blog
           </Link>
