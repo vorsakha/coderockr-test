@@ -88,7 +88,7 @@ const Posts = () => {
                 (idx + 1) % 3 === 0 && (idx + 1) % 2 === 0
                   ? `col-span-6 2xl:col-start-3`
                   : ``
-              } bg-white w-full flex flex-col lg:flex-row relative shadow`}
+              } bg-white w-full flex flex-col lg:flex-row relative shadow-lg`}
                 key={item.id}
               >
                 {!imageLoaded && (

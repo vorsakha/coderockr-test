@@ -47,10 +47,10 @@ const ContactDetail = () => {
   }, []);
 
   return (
-    <div className="fixed left-0 top-0 flex items-center justify-center h-screen w-screen bg-opacity-40 bg-gray-900 blur-lg z-50">
+    <div className="fixed left-0 top-0 flex items-center justify-center h-screen w-screen bg-opacity-60 bg-black blur-lg z-50">
       <div
         ref={ref}
-        className="bg-white shadow p-8 sm:p-16 w-full md:w-4/5 lg:w-3/5 xl:w-2/5 m-4 sm:m-8 lg:min-w-lg relative"
+        className="bg-white shadow-lg p-8 sm:p-16 w-full md:w-4/5 lg:w-3/5 xl:w-2/5 m-4 sm:m-8 lg:min-w-lg relative"
       >
         <div className="absolute top-0 right-0">
           <Close onClick={handleCloseButton} />
@@ -122,7 +122,7 @@ const ContactDetail = () => {
 
           <div className="mt-6 sm:mt-8 mx-auto">
             <button
-              className="flex shadow justify-center text-lg sm:text-2xl items-center text-white bg-gray-800 py-2 sm:py-3 w-36 sm:w-56"
+              className="flex shadow justify-center text-lg sm:text-2xl items-center text-white black py-2 sm:py-3 w-36 sm:w-56"
               type="submit"
             >
               <img className="mr-4 sm:mr-6" src={buttonIcon} alt="Submit" />{" "}

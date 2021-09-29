@@ -20,7 +20,7 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="p-1 black text-white shadow fixed w-screen top-0 z-40">
+    <header className="p-1 black text-white shadow-lg fixed w-screen top-0 z-40">
       <div className="px-4 flex flex-row justify-between items-center max-w-6xl mx-auto h-24">
         <div className="xl:text-4xl md:text-3xl text-2xl font-bold">
           <Link to="/" onClick={handleScrollTop}>
