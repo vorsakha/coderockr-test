@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PostsLink = ({ to, children }: { to: string; children: ReactNode }) => {
   return (
-    <Link className="text-3xl text-yellow" to={to}>
+    <Link className="text-3xl text-yellow font-bold" to={to}>
       {children}
     </Link>
   );
