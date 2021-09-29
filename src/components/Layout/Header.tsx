@@ -9,6 +9,8 @@ const Header = () => {
 
   const handleScrollTop = () => {
     window.scrollTo(0, 0);
+
+    setOpenMenu(false);
   };
 
   useEffect(() => {
@@ -28,7 +30,11 @@ const Header = () => {
 
         <div className="sm:hidden">
           {openMenu ? (
-            <Close onClick={() => setOpenMenu(false)} />
+            <Close
+              onClick={() => {
+                setOpenMenu(false);
+              }}
+            />
           ) : (
             <Menu onClick={() => setOpenMenu(true)} />
           )}
@@ -38,11 +44,21 @@ const Header = () => {
           <div className="sm:hidden flex items-center text-center justify-center absolute top-0 right-0 mt-24 w-screen h-screen text-2xl">
             <ul className="-mt-24 black w-screen min-h-partial flex flex-col justify-center">
               <li className="py-8">
-                <Link to="/">Posts</Link>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
+                >
+                  Posts
+                </Link>
               </li>
               <li className="py-8">
                 <Link
                   to={{ pathname: "/contact", state: { background: location } }}
+                  onClick={() => {
+                    setOpenMenu(false);
+                  }}
                 >
                   Contact
                 </Link>
