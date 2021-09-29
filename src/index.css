@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+
+@layer utilities {
+  .h-160 {
+    height: 640px;
+  }
+  .min-w-lg {
+    min-width: 810px;
+  }
+  .min-w-half {
+    min-width: 50%;
+  }
+  .max-w-half {
+    max-width: 50%;
+  }
+  .min-h-partial {
+    min-height: calc(100vh - 96px);
+  }
+  .black {
+    background-color: #2d2d2d;
+  }
+  .text-yellow {
+    color: #f1a10a;
+  }
+  .gradient {
+    background: linear-gradient(to right, #f1a10a, #2d2d2d);
+  }
+}
+
+p {
+  padding: 1rem 0;
+}
