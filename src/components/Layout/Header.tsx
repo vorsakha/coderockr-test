@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import handleBlockScroll from "../../utils/blockScroll";
-import Close from "../common/Close";
-import Menu from "../common/Menu";
+import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
@@ -29,43 +28,8 @@ const Header = () => {
         </div>
 
         <div className="sm:hidden">
-          {openMenu ? (
-            <Close
-              onClick={() => {
-                setOpenMenu(false);
-              }}
-            />
-          ) : (
-            <Menu onClick={() => setOpenMenu(true)} />
-          )}
+          <MobileMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
         </div>
-
-        {openMenu && (
-          <div className="sm:hidden flex items-center text-center justify-center absolute top-0 right-0 mt-24 w-screen h-screen text-2xl">
-            <ul className="-mt-24 black w-screen min-h-partial flex flex-col justify-center">
-              <li className="py-8">
-                <Link
-                  to="/"
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                >
-                  Posts
-                </Link>
-              </li>
-              <li className="py-8">
-                <Link
-                  to={{ pathname: "/contact", state: { background: location } }}
-                  onClick={() => {
-                    setOpenMenu(false);
-                  }}
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
 
         <ul className="sm:flex hidden flex-row xl:text-3xl md:text-2xl text-xl">
           <li className="px-8">
