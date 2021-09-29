@@ -75,7 +75,7 @@ const Posts = () => {
         <Loading />
       ) : (
         <>
-          <ul className="flex flex-col lg:grid lg:grid-cols-6 lg:gap-y-14 gap-y-4 py-5 px-4 md:px-0">
+          <ul className="flex flex-col lg:grid lg:grid-cols-6 lg:gap-y-14 gap-y-4 py-5 lg:py-16 px-4 md:px-0">
             {posts.map((item, idx) => (
               <li
                 ref={posts.length === idx + 1 ? setElement : null}
