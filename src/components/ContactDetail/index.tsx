@@ -55,7 +55,9 @@ const ContactDetail = () => {
         >
           <CloseIcon />
         </button>
-        <h1 className="text-4xl text-yellow pb-8 text-center">Contact</h1>
+        <h1 className="text-4xl text-yellow font-bold pb-8 text-center">
+          Contact
+        </h1>
         <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
           <label
             className="text-2xl mb-2"
@@ -119,7 +121,7 @@ const ContactDetail = () => {
 
           <div className="mt-8 mx-auto">
             <button
-              className="flex shadow items-center text-white bg-gray-800 py-3 px-10"
+              className="flex shadow justify-center text-2xl items-center text-white bg-gray-800 py-3 w-56"
               type="submit"
             >
               <img className="mr-6" src={buttonIcon} alt="Submit" /> Submit
