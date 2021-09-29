@@ -33,9 +33,11 @@ const Posts = () => {
 
     fetchPosts();
 
+    // disable eslint because of the if condition would make a infinite loop
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
+  // inf scroll
   const pageRef = useRef(page);
 
   useEffect(() => {
