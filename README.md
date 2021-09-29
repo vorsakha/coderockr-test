@@ -6,12 +6,13 @@
 
 - Reactjs
 - Tailwindcss
-  - Used to style the project faster
+  - Style the project faster
 - Axios
-  - Used to fetch api GET method
+  - Fetch api method
 - Typescript
-  - Used to add static typing to the code
+  - Add static typing to the code
 - React Testing Library
+  - Test react components
 
 ## ✔️Install
 
