@@ -1,18 +1,26 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Loading from "../common/LoadingSpinner";
 import PostsLink from "./PostsLink";
 import PostsIconLink from "./PostsIcon";
 import handleLimitString from "../../utils/limitString";
 
-const Posts = () => {
+const Posts = ({
+  setElement,
+  page,
+}: {
+  setElement: Dispatch<SetStateAction<HTMLElement | null>>;
+  page: number;
+}) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [posts, setPosts] = useState<PostTypes[]>([]);
-  const [element, setElement] = useState<HTMLElement | null>(null);
-  const [page, setPage] = useState<number>(1);
+
+  const source = axios.CancelToken.source();
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchPosts = async () => {
       setLoading(true);
 
@@ -20,7 +28,7 @@ const Posts = () => {
         `https://stormy-shelf-93141.herokuapp.com/articles?_page=${page}&_limit=6`
       );
 
-      if (posts.length !== 0) {
+      if (mounted && posts.length !== 0) {
         setPosts((posts) => [...posts, ...res.data]);
         setLoading(false);
         return;
@@ -33,43 +41,14 @@ const Posts = () => {
 
     fetchPosts();
 
+    return () => {
+      source.cancel();
+      mounted = false;
+    };
+
     // disable eslint because of the if condition would make a infinite loop
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
-
-  // inf scroll
-  const pageRef = useRef(page);
-
-  useEffect(() => {
-    if (page !== 4) pageRef.current = page;
-  }, [page]);
-
-  const observer = useRef(
-    new IntersectionObserver(
-      (entries) => {
-        const refElement = entries[0];
-        if (refElement.isIntersecting) {
-          setPage(pageRef.current + 1);
-        }
-      },
-      { threshold: 0.8 }
-    )
-  );
-
-  useEffect(() => {
-    const currentElement = element;
-    const currentObserver = observer.current;
-
-    if (currentElement) {
-      currentObserver.observe(currentElement);
-    }
-
-    return () => {
-      if (currentElement) {
-        currentObserver.unobserve(currentElement);
-      }
-    };
-  }, [element]);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-partial">
@@ -93,9 +72,7 @@ const Posts = () => {
               } bg-white w-full flex flex-col lg:flex-row relative shadow-lg`}
                 key={item.id}
               >
-                {!imageLoaded && (
-                  <div className="h-60 md:h-96 lg:h-full w-full max-w-half bg-gray-500"></div>
-                )}
+                {!imageLoaded && <Loading />}
                 <img
                   className="h-60 md:h-96 lg:h-full lg:max-w-half object-cover"
                   src={item.imageUrl}
