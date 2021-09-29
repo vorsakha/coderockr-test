@@ -2,8 +2,8 @@ import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import handleBlockScroll from "../../utils/blockScroll";
 import useClickOutside from "../../utils/hooks/useClickOutside";
-import buttonIcon from "../../assets/buttonIcon.svg";
 import Close from "../common/Close";
+import SubmitBtn from "./SubmitBtn";
 
 const ContactDetail = () => {
   const [formContent, setFormContent] = useState<FormTypes>({
@@ -121,13 +121,7 @@ const ContactDetail = () => {
           />
 
           <div className="mt-6 sm:mt-8 mx-auto">
-            <button
-              className="flex shadow justify-center text-lg sm:text-2xl items-center text-white black py-2 sm:py-3 w-36 sm:w-56"
-              type="submit"
-            >
-              <img className="mr-4 sm:mr-6" src={buttonIcon} alt="Submit" />{" "}
-              Submit
-            </button>
+            <SubmitBtn />
           </div>
         </form>
       </div>
