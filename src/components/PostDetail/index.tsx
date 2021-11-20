@@ -1,44 +1,21 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Loading from "../common/LoadingSpinner";
 import handleDate from "../../utils/formatDate";
+import useFetchPost from "../../hooks/useFetchPost";
+import { useHistory } from "react-router";
 
 const PostDetail = () => {
-  const [post, setPost] = useState<PostTypes | null>(null);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const { id } = useParams<{ id: string }>();
+  const { post, error } = useFetchPost();
+
+  const history = useHistory();
 
   useEffect(() => {
-    const source = axios.CancelToken.source();
-    let mounted = true;
-
-    const fetchPosts = async () => {
-      try {
-        const res = await axios.get(
-          `https://stormy-shelf-93141.herokuapp.com/articles?id=${id}`
-        );
-
-        if (mounted) {
-          setPost(res.data[0]);
-        }
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          mounted = false;
-        } else {
-          throw error;
-        }
-      }
-    };
-
-    fetchPosts();
-
-    return () => {
-      source.cancel();
-      mounted = false;
-    };
-  }, [id]);
+    if (error) {
+      history.push(`/404`);
+    }
+  }, [error, history]);
 
   return (
     <div className="flex justify-center items-center min-h-partial flex-wrap md:px-6">
