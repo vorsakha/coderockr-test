@@ -1,9 +1,9 @@
-import axios from "axios";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Loading from "../common/LoadingSpinner";
 import PostsLink from "./PostsLink";
 import PostsIconLink from "./PostsIcon";
 import handleLimitString from "../../utils/limitString";
+import useFetchPosts from "../../hooks/useFetchPosts";
 
 const Posts = ({
   setElement,
@@ -13,42 +13,8 @@ const Posts = ({
   page: number;
 }) => {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [posts, setPosts] = useState<PostTypes[]>([]);
 
-  const source = axios.CancelToken.source();
-
-  useEffect(() => {
-    let mounted = true;
-
-    const fetchPosts = async () => {
-      setLoading(true);
-
-      const res = await axios.get(
-        `https://stormy-shelf-93141.herokuapp.com/articles?_page=${page}&_limit=6`
-      );
-
-      if (mounted && posts.length !== 0) {
-        setPosts((posts) => [...posts, ...res.data]);
-        setLoading(false);
-        return;
-      }
-
-      setPosts(res.data);
-      setLoading(false);
-      return;
-    };
-
-    fetchPosts();
-
-    return () => {
-      source.cancel();
-      mounted = false;
-    };
-
-    // disable eslint because of the if condition would make a infinite loop
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  const { posts, loading } = useFetchPosts(page);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-partial">
