@@ -1,50 +1,12 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import handleBlockScroll from "../../utils/blockScroll";
-import useClickOutside from "../../utils/hooks/useClickOutside";
 import Close from "../common/Close";
 import SubmitBtn from "./SubmitBtn";
+import useForm from "../../hooks/useForm";
+import useModal from "../../hooks/useModal";
 
 const ContactDetail = () => {
-  const [formContent, setFormContent] = useState<FormTypes>({
-    name: "",
-    email: "",
-    phone: "",
-    post: "",
-  });
+  const { handleForm, handleSubmit, formContent } = useForm();
 
-  const handleForm = (e: ChangeEvent) => {
-    const value = (e.currentTarget as HTMLFormElement).value;
-    const name = (e.currentTarget as HTMLFormElement).name;
-
-    setFormContent((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    console.log(formContent);
-  };
-
-  const location: any = useLocation();
-
-  const history = useHistory();
-
-  // Handle close modal
-  const ref = useRef(null);
-  const handleCloseButton = () => {
-    handleBlockScroll(false);
-
-    // If user came from within the website goBack
-    // If user came from URL push page 1
-    location.state ? history.goBack() : history.push(`/`);
-  };
-
-  useClickOutside(ref, handleCloseButton);
-
-  useEffect(() => {
-    handleBlockScroll(true);
-  }, []);
+  const { ref, handleCloseButton } = useModal();
 
   return (
     <div className="fixed left-0 top-0 flex items-center justify-center h-screen w-screen bg-opacity-60 bg-black blur-lg z-50">
