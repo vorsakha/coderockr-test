@@ -15,6 +15,7 @@ function App() {
     <Layout>
       <Switch location={background || location}>
         <Route exact path="/" component={Home} />
+        <Route exact path="/404" component={Error} />
         <Route path="/post/:id" component={Post} />
         <Route path="*">
           <Error />
