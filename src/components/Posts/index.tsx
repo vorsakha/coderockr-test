@@ -22,6 +22,9 @@ const Posts = ({
         <Loading />
       ) : (
         <>
+          {!imageLoaded && (
+            <Loading className="fixed top-20 right-0 z-50 p-4" />
+          )}
           <ul className="flex flex-col lg:grid lg:grid-cols-6 lg:gap-y-14 gap-y-4 py-5 lg:py-16 px-4 md:px-0">
             {posts.map((item, idx) => (
               <li
@@ -38,7 +41,6 @@ const Posts = ({
               } bg-white w-full flex flex-col lg:flex-row relative shadow-lg`}
                 key={item.id}
               >
-                {!imageLoaded && <Loading />}
                 <img
                   className="h-60 md:h-96 lg:h-full lg:max-w-half object-cover"
                   src={item.imageUrl}
